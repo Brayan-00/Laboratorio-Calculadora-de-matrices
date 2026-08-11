@@ -1,0 +1,22 @@
+[project]
+name = "laboratorio-calculadora-de-matrices"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Brayan-00", email = "brayanfernando.10@gmail.com" },
+    {name = "fabianparrea",email = ""},
+    {name = "Shiofi", email = ""}
+    {name = "yonatv15", email = ""}
+]
+requires-python = ">=3.8"
+dependencies = [
+    "typer>=0.20.1",
+]
+
+[project.scripts]
+laboratorio-calculadora-de-matrices = "laboratorio_calculadora_de_matrices:main"
+
+[build-system]
+requires = ["uv_build>=0.12.1,<0.13.0"]
+build-backend = "uv_build"
