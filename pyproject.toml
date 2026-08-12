@@ -1,22 +1,26 @@
 [project]
-name = "laboratorio-calculadora-de-matrices"
+name = "matrix-calc"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-authors = [
-    { name = "Brayan-00", email = "brayanfernando.10@gmail.com" },
-    {name = "fabianparrea",email = ""},
-    {name = "Shiofi", email = ""}
-    {name = "yonatv15", email = ""}
-]
-requires-python = ">=3.8"
-dependencies = [
-    "typer>=0.20.1",
-]
+description = "Calculadora de matrices — EL5859 Computación Heterogénea"
+requires-python = ">=3.10"
+dependencies = ["typer>=0.12", "numpy>=2.0"]
 
 [project.scripts]
-laboratorio-calculadora-de-matrices = "laboratorio_calculadora_de_matrices:main"
+matrix-calc = "matrix_calc.cli:app"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
 
 [build-system]
-requires = ["uv_build>=0.12.1,<0.13.0"]
-build-backend = "uv_build"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "D"]
+ignore = ["D203", "D213", "N802"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D103"]
