@@ -13,12 +13,12 @@ Se espera que el usuario interactúe con esta calculadora mediante una interfaz 
 
 ### Diagrama de Flujo
 
-![Diagrama de Flujo]("Diagrama de Flujo.png")
+![Diagrama de Flujo](Diagrama%20de%20Flujo.png)
 
 
 ### Diagrama de Clases
 
-![Diagrama de Clases]("Diagrama de Clases.png")
+![Diagrama de Clases](Diagrama%20de%20Clases.png)
 
 ## Instrucciones para instalación
 
