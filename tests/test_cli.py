@@ -2,6 +2,7 @@
 
 import json
 
+import pytest
 from typer.testing import CliRunner
 
 from matrix_calc.cli import app
@@ -90,3 +91,35 @@ def test_run_mul_from_json(tmp_path) -> None:
         [19.0, 22.0],
         [43.0, 50.0],
     ]
+
+
+def test_run_det_from_json(tmp_path) -> None:
+    """Verifica un determinante completo ingresando las matrices mediante JSON."""
+    payload = {
+        "matrixA": {
+            "rows": 2,
+            "cols": 2,
+            "data": [[1.0, 2.0], [3.0, 4.0]],
+        },
+        "matrixB": {
+            "rows": 2,
+            "cols": 2,
+            "data": [[5.0, 6.0], [7.0, 8.0]],
+        },
+    }
+
+    input_file = tmp_path / "matrices.json"
+    input_file.write_text(json.dumps(payload), encoding="utf-8")
+
+    result = runner.invoke(
+        app,
+        ["run", "det", "--input", str(input_file)],
+    )
+
+    assert result.exit_code == 0
+
+    output = json.loads(result.output)
+
+    assert output["operation"] == "det"
+    assert output["result"]["matrixA"] == pytest.approx(-2.0)
+    assert output["result"]["matrixB"] == pytest.approx(-2.0)
