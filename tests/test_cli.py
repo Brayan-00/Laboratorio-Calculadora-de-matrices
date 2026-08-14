@@ -54,3 +54,39 @@ def test_run_add_from_json(tmp_path) -> None:
         [6.0, 8.0],
         [10.0, 12.0],
     ]
+
+
+def test_run_mul_from_json(tmp_path) -> None:
+    """Verifica una multiplicación completa ingresando las matrices mediante JSON."""
+    payload = {
+        "matrixA": {
+            "rows": 2,
+            "cols": 2,
+            "data": [[1.0, 2.0], [3.0, 4.0]],
+        },
+        "matrixB": {
+            "rows": 2,
+            "cols": 2,
+            "data": [[5.0, 6.0], [7.0, 8.0]],
+        },
+    }
+
+    input_file = tmp_path / "matrices.json"
+    input_file.write_text(json.dumps(payload), encoding="utf-8")
+
+    result = runner.invoke(
+        app,
+        ["run", "mul", "--input", str(input_file)],
+    )
+
+    assert result.exit_code == 0
+
+    output = json.loads(result.output)
+
+    assert output["operation"] == "mul"
+    assert output["result"]["rows"] == 2
+    assert output["result"]["cols"] == 2
+    assert output["result"]["data"] == [
+        [19.0, 22.0],
+        [43.0, 50.0],
+    ]
