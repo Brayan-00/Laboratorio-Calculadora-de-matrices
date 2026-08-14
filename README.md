@@ -70,7 +70,7 @@ Si el comando muestra la información de ayuda de `matrix-calc`, la instalación
 
 ## Instrucciones de utilización
 
-# Formato del archivo de entrada
+### Formato del archivo de entrada
 
 Las matrices sobre las que se realizarán las operaciones deben proporcionarse mediante un archivo en formato **JSON**.
 
