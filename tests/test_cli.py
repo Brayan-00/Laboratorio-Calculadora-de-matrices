@@ -173,3 +173,49 @@ def test_run_inv_from_json(tmp_path) -> None:
         output["result"]["matrixB"]["data"], expected_b
     ):
         assert actual_row == pytest.approx(expected_row)
+
+
+def test_run_writes_output_file(tmp_path) -> None:
+    """Verifica que la CLI escriba correctamente el resultado en un archivo."""
+    payload = {
+        "matrixA": {
+            "rows": 2,
+            "cols": 2,
+            "data": [[1.0, 2.0], [3.0, 4.0]],
+        },
+        "matrixB": {
+            "rows": 2,
+            "cols": 2,
+            "data": [[5.0, 6.0], [7.0, 8.0]],
+        },
+    }
+
+    input_file = tmp_path / "matrices.json"
+    output_file = tmp_path / "resultado.json"
+
+    input_file.write_text(json.dumps(payload), encoding="utf-8")
+
+    result = runner.invoke(
+        app,
+        [
+            "run",
+            "add",
+            "--input",
+            str(input_file),
+            "--output",
+            str(output_file),
+        ],
+    )
+
+    assert result.exit_code == 0
+    assert output_file.exists()
+
+    output = json.loads(output_file.read_text(encoding="utf-8"))
+
+    assert output["operation"] == "add"
+    assert output["result"]["rows"] == 2
+    assert output["result"]["cols"] == 2
+    assert output["result"]["data"] == [
+        [6.0, 8.0],
+        [10.0, 12.0],
+    ]
