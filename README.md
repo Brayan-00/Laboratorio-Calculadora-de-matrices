@@ -120,13 +120,37 @@ El archivo puede guardarse, por ejemplo, con el nombre:
 matrices.json
 ```
 
-## Ejemplos de utilización
 
-Una vez definido el archivo JSON con las matrices de entrada, las operaciones pueden ejecutarse desde la terminal mediante `uv run matrix-calc`.
+## Instrucciones de utilización
+
+### Ejecución de operaciones desde la terminal
+
+Una vez preparado el proyecto y definido el archivo JSON con las matrices de entrada, la calculadora puede ejecutarse desde la terminal utilizando la siguiente estructura:
+
+```bash
+uv run matrix-calc run <operación> --input <archivo.json>
+```
+
+En este comando:
+
+- `<operación>` corresponde a la operación matricial que se desea realizar.
+- `<archivo.json>` corresponde al archivo que contiene las matrices de entrada.
+
+Las operaciones disponibles son:
+
+- `add`: suma de matrices.
+- `mul`: multiplicación de matrices.
+- `det`: cálculo del determinante.
+- `inv`: cálculo de la inversa.
+
+La opción `--input` permite indicar el archivo JSON que contiene `matrixA` y `matrixB`.
+
+
+### Ejemplos de utilización
 
 En los siguientes ejemplos se utiliza un archivo llamado `matrices.json` como entrada.
 
-### Suma de matrices
+#### Suma de matrices
 
 Para realizar la suma de `matrixA` y `matrixB`, ejecute:
 
@@ -136,7 +160,7 @@ uv run matrix-calc run add --input matrices.json
 
 El comando `add` indica que se debe realizar la suma de las dos matrices.
 
-### Multiplicación de matrices
+#### Multiplicación de matrices
 
 Para realizar la multiplicación de `matrixA` por `matrixB`, ejecute:
 
@@ -146,7 +170,7 @@ uv run matrix-calc run mul --input matrices.json
 
 El comando `mul` selecciona la operación de multiplicación matricial.
 
-### Determinante
+#### Determinante
 
 Para calcular el determinante de las matrices proporcionadas, ejecute:
 
@@ -156,7 +180,7 @@ uv run matrix-calc run det --input matrices.json
 
 El comando `det` calcula el determinante de cada una de las matrices de entrada.
 
-### Inversa
+#### Inversa
 
 Para calcular la inversa de las matrices proporcionadas, ejecute:
 
