@@ -249,7 +249,10 @@ Se hizo uso de herramientas de Inteligencia Artificial principalmente en áreas 
 Se adjuntan links de las conversaciones como método de transparencia.
 
 [Conversación 1](https://chatgpt.com/share/6a7fd8c9-49d0-83e8-92fc-3cddc66d7e84)
+
 [Conversación 2](https://chatgpt.com/share/6a7fda78-7130-83e8-b975-9f30e66915c9)
+
+[Conversación 3](https://chatgpt.com/share/6a7fdf82-eb08-83e8-9fdd-212d3e5311d3)
 
 
 ## Integrantes, curso y profesor
